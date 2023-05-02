@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSnoop</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- You can find the library code from below link  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- end of library link  -->
+</head>
+<body>
+     
+      <div class="container">
+        <h1>Enter values</h1>
+        
+        <input id="text1" plcaeholder="inputvalue"> 
+        <br>
+        <input id="text2" plcaeholder="maxvalue">
+        <br>
+        <button onclick="calculate()" id="btn1">Plot</button>
+       
+        <div>
+          <canvas id="pie-chart"></canvas>
+        </div>
+      </div>
+      
+      <script>
+         function calculate(){
+            var input = document.getElementById("text1").value;
+            var max= document.getElementById("text2").value;
+            var data = [input,max];
+            if(max>input){
+                new Chart(document.getElementById('pie-chart'), {
+          type: 'pie',
+          data: {
+            labels: ["input value","max value-"],
+            datasets: [{
+              backgroundColor: ["#e63946", "#254BDD"],
+              data: data
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Pie Chart for admin panel'
+            },
+            responsive: true
+          }
+        });
+            }
+            else if(input>max){
+        alert("invalid input"+" "+input);
+       
+    }
+           
+}
+</script>
+     
+      
+</body>
+</html>
